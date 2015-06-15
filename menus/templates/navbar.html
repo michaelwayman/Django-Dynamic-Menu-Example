@@ -6,20 +6,15 @@
     </div>
     <div class="nav">
         <menu class="nav-item-menu">
-            {% for item in menu_items %}
-                <li class="nav-item"><a data-content="{{ item.title }}" href="#" class="">{{ item.title }}</a></li>
+
+            {% for item in menu.groups.all.0.items.all %}
+                <li class="nav-item"><a data-content="{{ item.name }}" href="{{ item.url }}" class="">{{ item.name }}</a></li>
             {% endfor %}
         </menu>
         <menu class="nav-item-submenu">
-            {#      {% if user.is_authenticated %}#}
-            <li class="nav-item-sub"><a data-content="Admin" href="{% url 'admin:index' %}" target="_blank">Admin</a>
-            </li>
-            {% if user.username %}
-                <li class="nav-item-sub"><a data-content="{{ user.username }}" href="#">{{ user.username }}</a></li>
-            {% else %}
-                <li class="nav-item-sub"><a data-content="Some user" href="#">Some user</a></li>
-            {% endif %}
-            {#      {% endif %}#}
+            {% for item in menu.groups.all.1.items.all %}
+                <li class="nav-item-sub"><a data-content="{{ item.name }}" href="{{ item.url }}" class="">{{ item.name }}</a></li>
+            {% endfor %}
         </menu>
     </div>
 </nav>

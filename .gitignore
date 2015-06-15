@@ -3,3 +3,5 @@
 *.map
 *.css
 *.js
+db.sqlite3
+/migrations/.0*
