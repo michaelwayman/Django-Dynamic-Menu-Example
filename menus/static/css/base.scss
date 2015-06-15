@@ -1,0 +1,102 @@
+$mobile: 980px;
+
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+body {
+  background-image: url('../images/Ha-Long-Bay-Sunset.jpg');
+  background-size: cover;
+  font-family: 'HelveticaNeue-Thin', Helvetica, Arial, Sans-Serif;
+
+  margin: 0;
+}
+
+@import 'navbar';
+@import 'landing';
+
+// =================================center======================================
+.center-auto {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.center-y {
+  @include vendor-prefix(transform, translate(0, -50%));
+  position: absolute;
+  top: 50%;
+}
+// =============================================================================
+
+
+.circle {
+  @include vendor-prefix(border-radius, 50%);
+}
+
+
+// ========================mobile-desktop-visibility============================
+.desktop {
+  @media (max-device-width: $mobile) {
+    display: none; }
+  @media (min-device-width: $mobile+1) {
+    display: initial; }
+}
+
+.mobile {
+  @media (max-device-width: $mobile) {
+    display: initial; }
+  @media (min-device-width: $mobile+1) {
+    display: none; }
+}
+// =============================================================================
+
+
+// =======================equidistant-items=====================================
+// items get placed equally distanced within the container
+.equ-con {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.equ-ite {
+  display: table-cell;
+  text-align: center;
+}
+// =============================================================================
+
+
+.hide {
+  display: none;
+}
+
+
+// ============================max-width========================================
+.max-960 {
+  max-width: 1080px;
+  min-width: 1080px;
+}
+
+.max-1500 {
+  max-width: 1500px;
+}
+// =============================================================================
+
+.pad-top {
+  padding-top: 3em;
+}
+
+.main-content {
+  height: 100%;
+  min-height: 600px;
+  position: relative;
+}

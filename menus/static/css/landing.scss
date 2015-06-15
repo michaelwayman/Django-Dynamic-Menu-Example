@@ -1,0 +1,23 @@
+.hipster-landing {
+  padding-top: 10%;
+
+  .sub-heading {
+    padding-left: 30%;
+  }
+
+  .feature {
+    width: 100%;
+  }
+
+  h1 {
+    font-weight: 100;
+
+    &.h1-lg {
+      font-size: 7em;
+    }
+  }
+
+  h4 {
+    font-weight: 200;
+  }
+}

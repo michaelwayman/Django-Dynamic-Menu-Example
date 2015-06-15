@@ -1,0 +1,24 @@
+{% load menus-tags static %}
+<html>
+<head>
+  <title>{% block title %} base {% endblock %}</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+  {% block extra_css %}
+  {% endblock %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="{% static "js/base.js" %}"></script>
+  <script src="{% static "js/navbar.js" %}"></script>
+  {% block extra_js %}
+  {% endblock %}
+
+</head>
+<body>
+  {% top_menu calling_page=None %}
+  <div class="main-content max-960 center-auto">
+  {% block content %}
+  {% endblock %}
+  </div>
+</body>
+</html>

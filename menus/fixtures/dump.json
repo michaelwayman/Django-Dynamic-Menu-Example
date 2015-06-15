@@ -1,0 +1,46 @@
+[
+{
+    "fields": {
+        "url": "#",
+        "live": true,
+        "title": "Home",
+        "order": 1,
+        "show_in_menu": true
+    },
+    "model": "menus.menuitem",
+    "pk": 1
+},
+{
+    "fields": {
+        "url": "#",
+        "live": true,
+        "title": "Products",
+        "order": 2,
+        "show_in_menu": true
+    },
+    "model": "menus.menuitem",
+    "pk": 2
+},
+{
+    "fields": {
+        "url": "#",
+        "live": true,
+        "title": "Contact",
+        "order": 3,
+        "show_in_menu": true
+    },
+    "model": "menus.menuitem",
+    "pk": 3
+},
+{
+    "fields": {
+        "url": "#",
+        "live": true,
+        "title": "Dashboard",
+        "order": 4,
+        "show_in_menu": true
+    },
+    "model": "menus.menuitem",
+    "pk": 4
+}
+]

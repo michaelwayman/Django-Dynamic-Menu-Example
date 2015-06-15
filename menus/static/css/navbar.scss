@@ -1,0 +1,143 @@
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+$nav-active-color: #c1c5ca;
+$nav-hover-color: #fdf9f0;
+$nav-background-color: rgba(0, 0, 0, .5);
+$nav-width: 360px;
+$nav-item-font-size: 2em;
+$nav-item-padding: .5em;
+$nav-item-color: #c1c5ca;
+$nav-item-sub-color: #c1c5ca;
+$nav-item-font: 'HelveticaNeue-Thin', Helvetica, Arial, Sans-Serif;
+
+$btn-top: 2em;
+$btn-left: 3em;
+$btn-stripe-color: #000;
+$btn-stripe-invert: #c1c5ca;
+$btn-height: 32px;
+$btn-width: 32px;
+$btn-stripe-height: 2px;
+
+// Container for the navigation to sit in
+#nav {
+  height: 100%;
+  position: absolute;
+  width: 0;
+}
+
+// The button the user hovers over
+.nav-btn {
+  height: $btn-height;
+  left: $btn-left;
+  position: absolute;
+  top: $btn-top;
+  vertical-align: middle;
+  width: $btn-width;
+  z-index: 3;
+
+  .stripe {
+    @include vendor-prefix(transition, background-color .7s cubic-bezier(.19, 1, .22, 1));
+    background-color: $btn-stripe-color;
+    height: $btn-stripe-height;
+    margin-bottom: ($btn-height - (3*$btn-stripe-height))/4;
+    margin-top: ($btn-height - (3*$btn-stripe-height))/4;
+    width: 100%;
+  }
+
+  &.active {
+    .stripe {
+      background-color: $btn-stripe-invert;
+    }
+  }
+}
+
+.nav {
+  @include vendor-prefix(transition, all .7s cubic-bezier(.19, 1, .22, 1));
+  @include vendor-prefix(transform, translate3d(-100%, 0, 0));
+  background-color: $nav-background-color;
+  font-family: $nav-item-font;
+  height: 100%;
+  position: absolute;
+  width: $nav-width;
+  z-index: 2;
+
+  &.active {
+    @include vendor-prefix(transform, translate3d(0, 0, 0));
+    -webkit-backface-visibility: hidden;
+	  -webkit-perspective: 1000;
+  }
+
+  menu {
+    padding: 0;
+  }
+}
+
+.nav-item-menu,
+.nav-item-submenu {
+  @include vendor-prefix(transform, translate(0, -70%));
+  @include vendor-prefix(transition, all .3s ease-out);
+  left: -50px;
+  opacity: 0;
+  position: absolute;
+
+  &.active {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+.nav-item,
+.nav-item-sub {
+  list-style-type: none;
+  margin-left: 105px;
+  padding-bottom: $nav-item-padding;
+  padding-top: $nav-item-padding;
+
+  &:hover a:before {
+    clip: rect(0, 200px, 100px, 0);
+  }
+
+  a {
+    text-decoration: none;
+
+    &:before {
+      @include vendor-prefix(transition, clip .4s cubic-bezier(.645, .045, .355, 1));
+      clip: rect(0, 0, 100px, 0);
+      color: $nav-hover-color;
+      content: attr(data-content);
+      position: absolute;
+    }
+  }
+} 
+
+.nav-item-menu {
+  top: 50%;
+  transition-delay: .1s;
+
+  .nav-item {
+    a {
+      color: $nav-item-color;
+      font-size: $nav-item-font-size;
+    }
+
+    .active {
+      color: $nav-active-color;
+    }
+  }
+}
+
+.nav-item-submenu {
+  top: 80%;
+  transition-delay: .4s;
+
+  .nav-item-sub a {
+    color: $nav-item-sub-color;
+    font-size: $nav-item-font-size*.6;
+  }
+}
